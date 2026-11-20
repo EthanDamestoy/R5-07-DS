@@ -1,0 +1,27 @@
+name: Q2
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Créer le fichier
+        run: |
+          {
+            echo "Ethan DAMESTOY"
+            date
+            cat XYZ.txt
+            echo "Taille de XYZ.txt : $(wc -c < XYZ.txt) octets"
+          } > Q2_archive_XYZ.txt
+      - name: Commit et push
+        run: |
+          git config --global user.name  "EthanDamestoy"
+          git config --global user.email "ethan.damestoy@etu.univ-lehavre.fr"
+          git add -A
+          git diff --cached --quiet || git commit -m "Q2"
+          git pull --rebase
+          git push
