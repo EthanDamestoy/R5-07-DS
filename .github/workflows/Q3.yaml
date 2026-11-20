@@ -1,0 +1,25 @@
+name: Q3
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Créer le fichier
+        run: |
+          {
+            echo "Ethan DAMESTOY"
+            cat Q3.java
+          } > Q3_archive_java.txt
+      - name: Commit et push
+        run: |
+          git config --global user.name  "EthanDamestoy"
+          git config --global user.email "ethan.damestoy@etu.univ-lehavre.fr"
+          git add -A
+          git diff --cached --quiet || git commit -m "Q3"
+          git pull --rebase
+          git push
