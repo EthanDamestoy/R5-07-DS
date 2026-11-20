@@ -1,0 +1,15 @@
+public class Q3 
+{
+  
+  public static void main(String[] args) 
+  {
+    int n = Integer.parseInt(args[0]);
+    String resultat = "";
+    for (int i = n; i >= 1; i--) 
+    {
+      resultat = resultat + i + " ";
+    }
+    System.out.println(resultat.trim());
+  }
+  
+}
